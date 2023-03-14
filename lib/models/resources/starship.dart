@@ -55,4 +55,7 @@ class Starship extends Resource {
       films: List<String>.from(map['films'].map((e) => e.toString())),
     );
   }
+
+  @override
+  List<String> get searchableStrings => [name, type.toString(), model, starshipClass, manufacturer];
 }

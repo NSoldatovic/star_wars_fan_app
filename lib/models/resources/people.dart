@@ -11,7 +11,7 @@ class People extends Resource {
   final String skinColor;
   final List<String> films;
   final List<String> species;
-  final List<String> homeworld;
+  final String homeworld;
   final List<String> starships;
   final List<String> vehicles;
 
@@ -45,10 +45,13 @@ class People extends Resource {
       films: List<String>.from(map['films'].map((e) => e.toString())),
       species: List<String>.from(map['species'].map((e) => e.toString())),
       starships: List<String>.from(map['starships'].map((e) => e.toString())),
-      homeworld: [map['homeworld'] as String],
+      homeworld: map['homeworld'] as String,
       vehicles: List<String>.from(map['vehicles'].map((e) => e.toString())),
       name: map['name'] as String,
       url: map['url'] as String,
     );
   }
+
+  @override
+  List<String> get searchableStrings => [name, type.toString(), gender];
 }

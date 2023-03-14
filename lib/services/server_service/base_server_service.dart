@@ -39,7 +39,7 @@ class BaseServerService {
 
   Future<http.Response> getRequestFromUrl(String url) async {
     return await http.get(
-      Uri.parse("$url"),
+      Uri.parse(url),
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"

@@ -40,4 +40,7 @@ class Planet extends Resource {
       url: map['url'] as String,
     );
   }
+
+  @override
+  List<String> get searchableStrings => [name, type.toString(), terrain];
 }

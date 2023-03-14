@@ -6,9 +6,9 @@ abstract class SplashState extends Equatable {
 
 class SplashLoading extends SplashState {
 
-  int percentage = 0;
+  final int percentage;
 
-  SplashLoading(this.percentage);
+  const SplashLoading(this.percentage);
   @override
   List<Object> get props => [percentage];
 }

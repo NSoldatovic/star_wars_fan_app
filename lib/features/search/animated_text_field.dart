@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:star_wars_fan_app/services/all_services.dart';
+import 'package:star_wars_fan_app/ui_consts/app_spacing.dart';
 
 class AnimatedSearchTextField extends StatefulWidget {
   final String hintText;
@@ -12,8 +14,7 @@ class AnimatedSearchTextField extends StatefulWidget {
   _AnimatedSearchTextFieldState createState() => _AnimatedSearchTextFieldState();
 }
 
-class _AnimatedSearchTextFieldState extends State<AnimatedSearchTextField>
-    with SingleTickerProviderStateMixin {
+class _AnimatedSearchTextFieldState extends State<AnimatedSearchTextField> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
 
@@ -26,20 +27,20 @@ class _AnimatedSearchTextFieldState extends State<AnimatedSearchTextField>
     );
     _animation = Tween<double>(begin: 1.0, end: 0.0).animate(_controller);
     widget.controller.addListener(_onTextChanged);
+    AllServices().searchResourceService.setClearTextField(_clearText);
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
-        color: Colors.grey[200],
         borderRadius: BorderRadius.circular(16),
+        color: Theme.of(context).colorScheme.onSurface,
       ),
       child: Row(
         children: [
           const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
             child: Icon(Icons.search),
           ),
           Expanded(
@@ -76,12 +77,15 @@ class _AnimatedSearchTextFieldState extends State<AnimatedSearchTextField>
 
   void _clearText() {
     widget.controller.clear();
-    _controller.reverse();
+    widget.onTextChanged("");
+    FocusScope.of(context).unfocus();
+    _controller.forward();
   }
 
   @override
   void dispose() {
     _controller.dispose();
+    AllServices().searchResourceService.setClearTextField(null);
     widget.controller.removeListener(_onTextChanged);
     super.dispose();
   }

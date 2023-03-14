@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:star_wars_fan_app/features/home/bloc/home_bloc.dart';
+import 'package:star_wars_fan_app/features/home/widgets/home_error_dialog.dart';
 import 'package:star_wars_fan_app/router.dart';
-
-import '../cubit/splash_cubit.dart';
+import 'package:star_wars_fan_app/features/splash/cubit/splash_cubit.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -13,14 +12,17 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocListener(
       listeners: [
-        BlocListener <HomeBloc, HomeState>(
+        BlocListener<HomeBloc, HomeState>(
           listener: (context, state) {
             if (state is HomeLoading) {
               context.read<SplashCubit>().startLoading(state.percentage);
             }
+            if (state is HomeError) {
+              HomeErrorDialog.show(context, state.errorText);
+            }
           },
         ),
-        BlocListener <SplashCubit, SplashState>(
+        BlocListener<SplashCubit, SplashState>(
           listener: (context, state) {
             if (state is SplashLoaded) {
               context.goNamed(MyRouter.homePageName);
@@ -33,19 +35,19 @@ class SplashPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-                onPressed: () {
-                  context.goNamed(MyRouter.homePageName);
-                },
-                child: Text("Start")),
-            Container(child: BlocBuilder<SplashCubit, SplashState>(
-                builder: (context, state) {
+              onPressed: () {
+                context.goNamed(MyRouter.homePageName);
+              },
+              child: Text("Start"),
+            ),
+            BlocBuilder<SplashCubit, SplashState>(builder: (context, state) {
               final currentState = state;
               if (currentState is SplashLoading) {
                 return Text("Loading... ${currentState.percentage}%");
               } else {
                 return const SizedBox.shrink();
               }
-            })),
+            }),
           ],
         ),
       ),

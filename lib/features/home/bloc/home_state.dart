@@ -22,3 +22,26 @@ class HomeLoading extends HomeState {
   @override
   List<Object> get props => [percentage];
 }
+
+
+class HomeSearchLoading extends HomeState {
+  const HomeSearchLoading();
+  @override
+  List<Object> get props => [];
+}
+
+
+class HomeError extends HomeState {
+  final String errorText;
+  const HomeError(this.errorText);
+  @override
+  List<Object> get props => [errorText];
+}
+
+
+class HomeSearchNotFound extends HomeState {
+  final String text;
+  const HomeSearchNotFound(this.text);
+  @override
+  List<Object> get props => [text];
+}
