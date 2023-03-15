@@ -36,6 +36,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       emit(const HomeLoading(75));
       allResources.addAll(await AllServices().serverCommunicationService.getAllPeople());
       emit(const HomeLoading(100));
+      _connectResources();
       await Future.delayed(const Duration(milliseconds: 50));
       emit(HomeLoaded(allResources));
     } catch (e) {
@@ -87,6 +88,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       return filteredList;
     } else {
       return allResources;
+    }
+  }
+
+  _connectResources() {
+    for (final resource in allResources) {
+      resource.populateConnectedResources(allResources);
     }
   }
 }

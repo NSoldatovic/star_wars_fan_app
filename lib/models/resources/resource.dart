@@ -77,6 +77,8 @@ class Resource extends Equatable {
     return 'Resource{name: $name, url: $url, type: $type}';
   }
 
+  void populateConnectedResources(List<Resource> allResources) {}
+
   @override
   List<Object?> get props => [name, url, type];
 

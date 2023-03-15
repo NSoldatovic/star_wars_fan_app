@@ -1,4 +1,4 @@
-import 'resource.dart';
+import 'package:star_wars_fan_app/models/models.dart';
 
 class Starship extends Resource {
   final String model;
@@ -13,10 +13,12 @@ class Starship extends Resource {
   final String mglt;
   final String cargoCapacity;
   final String consumables;
-  final List<String> pilots;
-  final List<String> films;
 
-  const Starship({
+  final Map<String, List<String>> connectedResourcesUrls = {};
+  final List<People> pilots = [];
+  final List<Film> films = [];
+
+  Starship({
     required this.model,
     required this.starshipClass,
     required this.manufacturer,
@@ -29,14 +31,12 @@ class Starship extends Resource {
     required this.mglt,
     required this.cargoCapacity,
     required this.consumables,
-    required this.pilots,
-    required this.films,
     required super.name,
     required super.url,
   }) : super(type: ResourceType.starships);
 
   factory Starship.fromMap(Map<String, dynamic> map) {
-    return Starship(
+    final starship = Starship(
       name: map['name'] as String,
       url: map['url'] as String,
       model: map['model'] as String,
@@ -51,9 +51,22 @@ class Starship extends Resource {
       mglt: map['MGLT'] as String,
       cargoCapacity: map['cargo_capacity'] as String,
       consumables: map['consumables'] as String,
-      pilots: List<String>.from(map['pilots'].map((e) => e.toString())),
-      films: List<String>.from(map['films'].map((e) => e.toString())),
     );
+    starship.connectedResourcesUrls.addAll({
+      'pilots': List<String>.from(map['pilots'].map((e) => e.toString())),
+      'films': List<String>.from(map['films'].map((e) => e.toString())),
+    });
+    return starship;
+  }
+
+  @override
+  void populateConnectedResources(List<Resource> allResources) {
+    for (final url in connectedResourcesUrls['pilots'] ?? []) {
+      pilots.add(allResources.firstWhere((resource) => resource.url == url) as People);
+    }
+    for (final url in connectedResourcesUrls['films'] ?? []) {
+      films.add(allResources.firstWhere((resource) => resource.url == url) as Film);
+    }
   }
 
   @override
