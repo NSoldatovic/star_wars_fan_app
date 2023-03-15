@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:star_wars_fan_app/features/home/bloc/home_bloc.dart';
 import 'package:star_wars_fan_app/features/home/widgets/resource_filter.dart';
 import 'package:star_wars_fan_app/models/models.dart';
 import 'package:star_wars_fan_app/router.dart';
@@ -66,24 +68,41 @@ class _HomeResourceListState extends State<HomeResourceList> with TickerProvider
           ScaleTransition(
             alignment: Alignment.bottomRight,
             scale: _hideFabAnimation,
-            child: Align(
-              alignment: Alignment.bottomRight,
-              child: Container(
-                width: 64,
-                height: 64,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Theme.of(context).colorScheme.secondary
+            child: Stack(
+              children: [
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: Container(
+                    width: 64,
+                    height: 64,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Theme.of(context).colorScheme.secondary
+                    ),
+                    margin: const EdgeInsets.all(AppSpacing.sm),
+                    padding: const EdgeInsets.all(AppSpacing.xxs),
+                    child: IconButton(onPressed: () {
+                      ResourceFilter.show(context);
+                    }, icon: const Icon(Icons.filter_list_rounded, size: 32,)),
+                  ),
                 ),
-                margin: const EdgeInsets.all(AppSpacing.sm),
-                padding: const EdgeInsets.all(AppSpacing.xxs),
-                child: IconButton(onPressed: () {
-                  ResourceFilter.show(context);
-                }, icon: const Icon(Icons.filter_list_rounded, size: 32,)),
-              ),
+                if (context.read<HomeBloc>().selectedTypes.isNotEmpty) Positioned(
+                  right: 12,
+                  bottom: 54,
+                  child: Container(
+                    width: 12,
+                    height: 12,
+                    alignment: Alignment.topLeft,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Theme.of(context).colorScheme.error
+                    ),
+                  ),
+                ),
+              ],
             ),
-          )
+          ),
         ],
       ),
     );
