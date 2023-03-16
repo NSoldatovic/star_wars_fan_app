@@ -5,6 +5,7 @@ import 'package:star_wars_fan_app/features/home/view/home_resource_list.dart';
 import 'package:star_wars_fan_app/features/home/widgets/home_error_dialog.dart';
 import 'package:star_wars_fan_app/features/home/widgets/home_no_data.dart';
 import 'package:star_wars_fan_app/features/search/search.dart';
+import 'package:star_wars_fan_app/features/themes/app_theme.dart';
 import 'package:star_wars_fan_app/utils/utils.dart';
 
 class HomePage extends StatelessWidget {
@@ -35,7 +36,7 @@ class HomePage extends StatelessWidget {
                 HomeErrorDialog.show(context, state.errorText);
               }
             }, builder: (context, state) {
-              if (state is HomeLoaded) {
+              if (state is HomeLoaded && state.resources.isNotEmpty) {
                 return HomeResourceList(
                   resources: state.resources,
                 );
@@ -49,11 +50,12 @@ class HomePage extends StatelessWidget {
               } else if (state is HomeSearchNotFound) {
                 return Expanded(
                   child: Center(
-                      child: Text(
-                        "${context.translate("can_not_find_resource")}"
-                        " \"${state.text}\" "
-                        "😕",
-                    textAlign: TextAlign.center,
+                    child: Text(
+                      "${context.translate("can_not_find_resource")}"
+                      " \"${state.text}\" "
+                      "😕",
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).boldText.copyWith(fontSize: 16),
                   )),
                 );
               } else {

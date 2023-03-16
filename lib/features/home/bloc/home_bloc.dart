@@ -88,6 +88,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           }
         }
       }
+      filteredList.sort((a, b) => a.name.compareTo(b.name));
       return filteredList;
     } else {
       return allResources;
