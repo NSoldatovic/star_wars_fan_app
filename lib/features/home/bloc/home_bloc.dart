@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:star_wars_fan_app/models/models.dart';
@@ -41,9 +42,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       allResources.sort((a, b) => a.name.compareTo(b.name));
       await Future.delayed(const Duration(milliseconds: 50));
       emit(HomeLoaded(allResources));
-    } catch (e) {
+    } catch (e, st) {
       emit(HomeError(e.toString()));
-      print("HOME FETCH ERROR: $e");
+      log("HOME FETCH ERROR: $e $st");
     }
   }
 
@@ -95,7 +96,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   _connectResources() {
     for (final resource in allResources) {
-      resource.populateConnectedResources(allResources);
+      try {
+        resource.populateConnectedResources(allResources);
+      } catch (e, st) {
+        log("HOME RESOURCE CONNECTION ERROR: $e $st");
+      }
     }
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:star_wars_fan_app/features/home/bloc/home_bloc.dart';
 import 'package:star_wars_fan_app/features/home/widgets/home_error_dialog.dart';
+import 'package:star_wars_fan_app/features/splash/widgets/loading_dots.dart';
 import 'package:star_wars_fan_app/features/themes/app_theme.dart';
 import 'package:star_wars_fan_app/router.dart';
 import 'package:star_wars_fan_app/features/splash/cubit/splash_cubit.dart';
@@ -11,6 +12,19 @@ import 'package:star_wars_fan_app/ui_consts/star_wars_scaffold.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => SplashCubit(),
+      child: const SplashView(),
+    );
+  }
+}
+
+
+class SplashView extends StatelessWidget {
+  const SplashView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +46,7 @@ class SplashPage extends StatelessWidget {
           listener: (context, state) {
             if (state is SplashLoaded) {
               context.goNamed(MyRouter.homePageName);
+              context.read<SplashCubit>().close();
             }
           },
         ),
@@ -74,8 +89,15 @@ class SplashPage extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Text("Loading... ${currentState.percentage}",
-                            style: Theme.of(context).headerRegularText.copyWith(fontSize: 24),),
+                            Row(
+                              children: [
+                                Text("Loading",
+                                style: Theme.of(context).headerRegularText.copyWith(fontSize: 24),),
+                                const LoadingDots(),
+                                Text(" ${currentState.percentage}",
+                                style: Theme.of(context).headerRegularText.copyWith(fontSize: 24),),
+                              ],
+                            ),
                             Padding(
                               padding: const EdgeInsets.only(bottom: AppSpacing.xxs, left: AppSpacing.xxs),
                                 child: Text("%", style: Theme.of(context).boldText.copyWith(fontSize: 24, fontWeight: FontWeight.w800),))

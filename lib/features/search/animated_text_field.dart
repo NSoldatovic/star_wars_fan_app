@@ -29,6 +29,7 @@ class _AnimatedSearchTextFieldState extends State<AnimatedSearchTextField> with 
     _animation = Tween<double>(begin: 1.0, end: 0.0).animate(_controller);
     widget.controller.addListener(_onTextChanged);
     AllServices().searchResourceService.setClearTextField(_clearText);
+    _controller.forward();
   }
 
   @override
@@ -38,7 +39,7 @@ class _AnimatedSearchTextFieldState extends State<AnimatedSearchTextField> with 
         borderRadius: BorderRadius.circular(16),
         color: Theme.of(context).primaryColor,
       ),
-      margin: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+      margin: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
       child: Row(
         children: [
           const Padding(

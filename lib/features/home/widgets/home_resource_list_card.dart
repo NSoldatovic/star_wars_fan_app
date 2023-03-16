@@ -9,6 +9,7 @@ class HomeResourceListCard extends StatelessWidget {
     super.key,
     required this.resource,
   });
+
   final Resource resource;
 
   @override
@@ -38,21 +39,18 @@ class HomeResourceListCard extends StatelessWidget {
                     child: Row(
                       children: [
                         Expanded(
-                          child: Column (
+                          child: Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Flexible(
-                                child: Text(
-                                  resource.name,
-                                  style: const TextStyle(
-                                    fontSize: 24,
-                                    overflow: TextOverflow.ellipsis,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
+                                child: Text(resource.name,
+                                    style: Theme.of(context).boldText.copyWith(
+                                          fontSize: 24,
+                                        )),
                               ),
-                              Text(resource.type.toFrontendString()),
+                              Text(resource.type.toFrontendString(),
+                                  style: Theme.of(context).normalText),
                             ],
                           ),
                         ),
@@ -68,12 +66,8 @@ class HomeResourceListCard extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                   border: Border(
-                      bottom: BorderSide(
-                        color: Theme.of(context).getColorByType(resource.type),
-                        width: 2
-                      )
-                  )
-              ),
+                      bottom:
+                          BorderSide(color: Theme.of(context).getColorByType(resource.type), width: 2))),
             ),
           ],
         ),

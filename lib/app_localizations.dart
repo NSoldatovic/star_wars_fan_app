@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -49,7 +50,7 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
       return localizations;
     }
     catch(e) {
-      print(e);
+      log("$e");
       return localizations;
     }
   }

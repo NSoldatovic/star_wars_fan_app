@@ -17,16 +17,22 @@ class HomeErrorDialog {
           ),
           backgroundColor: Theme.of(context).colorScheme.background,
           title: Text('Error',
-              style: Theme.of(context).boldText.copyWith(fontSize: 24)
-          ),
+              style: Theme.of(context).boldText.copyWith(fontSize: 24)),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(errorText,
-              style: Theme.of(context).normalText,),
-              const SizedBox(height: AppSpacing.sm,),
-              Text("Check your internet connection! |||", style: Theme.of(context).normalText,),
+              Text(
+                errorText,
+                style: Theme.of(context).normalText,
+              ),
+              const SizedBox(
+                height: AppSpacing.sm,
+              ),
+              Text(
+                "Check your internet connection! |||",
+                style: Theme.of(context).normalText,
+              ),
             ],
           ),
           actions: <Widget>[
@@ -37,11 +43,16 @@ class HomeErrorDialog {
                   borderRadius: BorderRadius.circular(16),
                 ),
               ),
-                onPressed: () {
-                  Navigator.pop(context);
-                  context.read<HomeBloc>().add(HomeFetchResources());
-                  context.goNamed(MyRouter.splashPageName);
-                }, child: Text("TRY AGAIN |||", style: Theme.of(context).buttonText,)),
+              onPressed: () {
+                Navigator.pop(context);
+                context.read<HomeBloc>().add(HomeFetchResources());
+                context.goNamed(MyRouter.splashPageName);
+              },
+              child: Text(
+                "TRY AGAIN |||",
+                style: Theme.of(context).buttonText,
+              )
+            ),
           ],
         );
       },

@@ -21,7 +21,7 @@ class HomeResourceList extends StatefulWidget {
   State<HomeResourceList> createState() => _HomeResourceListState();
 }
 
-class _HomeResourceListState extends State<HomeResourceList> with TickerProviderStateMixin{
+class _HomeResourceListState extends State<HomeResourceList> with TickerProviderStateMixin {
 
   late AnimationController _hideFabAnimation;
 
