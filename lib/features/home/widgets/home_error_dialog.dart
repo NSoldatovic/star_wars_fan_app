@@ -15,6 +15,7 @@ class HomeErrorDialog {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppRadius.standard),
           ),
+          actionsPadding: const EdgeInsets.all(AppSpacing.lg),
           backgroundColor: Theme.of(context).colorScheme.background,
           title: Text('Error',
               style: Theme.of(context).boldText.copyWith(fontSize: 24)),
