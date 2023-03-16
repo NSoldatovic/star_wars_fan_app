@@ -68,6 +68,7 @@ flutter:
   assets:
     - lang/en.json
     - assets/images/
+    - assets/icons/
 
   fonts:
     - family: StarJediRegular

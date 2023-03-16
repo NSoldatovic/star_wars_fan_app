@@ -50,9 +50,9 @@ class HomePage extends StatelessWidget {
                 return Expanded(
                   child: Center(
                       child: Text(
-                    "Sorry, we can't find any resource that \nmatches |||"
-                    " \"${state.text}\" "
-                    "😕",
+                        "${context.translate("can_not_find_resource")}"
+                        " \"${state.text}\" "
+                        "😕",
                     textAlign: TextAlign.center,
                   )),
                 );

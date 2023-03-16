@@ -17,7 +17,7 @@ class HomeErrorDialog {
           ),
           actionsPadding: const EdgeInsets.all(AppSpacing.lg),
           backgroundColor: Theme.of(context).colorScheme.background,
-          title: Text('Error',
+          title: Text(context.translate("error_dialog_title"),
               style: Theme.of(context).boldText.copyWith(fontSize: 24)),
           content: Column(
             mainAxisSize: MainAxisSize.min,
@@ -31,7 +31,7 @@ class HomeErrorDialog {
                 height: AppSpacing.sm,
               ),
               Text(
-                "Check your internet connection! |||",
+                context.translate("error_dialog_check_internet"),
                 style: Theme.of(context).normalText,
               ),
             ],
@@ -50,7 +50,7 @@ class HomeErrorDialog {
                 context.goNamed(MyRouter.splashPageName);
               },
               child: Text(
-                "TRY AGAIN |||",
+                context.translate("try_again"),
                 style: Theme.of(context).buttonText,
               )
             ),

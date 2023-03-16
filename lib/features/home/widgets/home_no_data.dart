@@ -16,7 +16,7 @@ class HomeNoData extends StatelessWidget {
       child: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Text(
-            "NO DATA! |||",
+            context.translate("home_no_data"),
             textAlign: TextAlign.center,
             style: Theme.of(context).boldText.copyWith(fontSize: 28),
           ),
@@ -35,7 +35,7 @@ class HomeNoData extends StatelessWidget {
                 context.read<HomeBloc>().add(HomeFetchResources());
               },
               child: Text(
-                "TRY AGAIN |||",
+                context.translate("try_again"),
                 style: Theme.of(context).buttonText,
               )),
         ]),

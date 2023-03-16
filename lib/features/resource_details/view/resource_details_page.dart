@@ -27,7 +27,7 @@ class ResourceDetailsPage extends StatelessWidget {
               width: AppSpacing.sm,
             ),
             Text(
-              "${resource.type.toFrontendString()} " "Details |||",
+              "${resource.type.toFrontendString()} " "${context.translate("details_page_title")}",
               style: Theme.of(context).boldText.copyWith(fontSize: 22),
             ),
             ],

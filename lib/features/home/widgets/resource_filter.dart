@@ -55,15 +55,16 @@ class _FilterWidgetState extends State<_FilterWidget> {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: AppSpacing.sm + 3),
-                  child: Text("Select type |||",
-                      style: Theme.of(context).boldText.copyWith(fontSize: 20)),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: AppSpacing.sm + 3),
+                    child: Text(context.translate("filter_title"),
+                        style: Theme.of(context).boldText.copyWith(fontSize: 18)),
+                  ),
                 ),
-                const Spacer(),
                 TextButton(
                   child: Text(
-                    "Clear All |||",
+                    context.translate("filter_clear"),
                     style: Theme.of(context).boldText.copyWith(
                         fontSize: 16, decoration: TextDecoration.underline),
                   ),

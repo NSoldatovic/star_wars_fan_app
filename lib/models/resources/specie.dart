@@ -1,6 +1,5 @@
 import 'package:star_wars_fan_app/models/models.dart';
 
-import 'resource.dart';
 
 class Specie extends Resource {
 

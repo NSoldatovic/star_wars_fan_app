@@ -89,7 +89,7 @@ class SplashView extends StatelessWidget {
                           children: [
                             Row(
                               children: [
-                                Text("Loading",
+                                Text(context.translate("splash_loading"),
                                 style: Theme.of(context).headerRegularText.copyWith(fontSize: 24),),
                                 const LoadingDots(),
                                 Text(" ${currentState.percentage}",

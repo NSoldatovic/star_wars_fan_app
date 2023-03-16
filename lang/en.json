@@ -1,4 +1,12 @@
 {
-    "loading_dialog_title": "Loading...",
-    "end": "end"
+    "can_not_find_resource": "Sorry, we can't find any resource that \nmatches |||",
+    "filter_title": "Select Resource Type:",
+    "search_hint_text": "Search",
+    "splash_loading": "Loading",
+    "details_page_title": "Details",
+    "filter_clear": "Clear",
+    "home_no_data": "No Data...",
+    "error_dialog_title": "Error",
+    "error_dialog_check_internet": "Check your internet connection!",
+    "try_again": "Try Again"
 }
