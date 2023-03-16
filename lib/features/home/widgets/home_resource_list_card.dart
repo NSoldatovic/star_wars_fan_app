@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:star_wars_fan_app/features/themes/app_theme.dart';
 import 'package:star_wars_fan_app/models/models.dart';
 import 'package:star_wars_fan_app/router.dart';
-import 'package:star_wars_fan_app/ui_consts/app_spacing.dart';
+import 'package:star_wars_fan_app/ui_consts/dimen.dart';
 
 class HomeResourceListCard extends StatelessWidget {
   const HomeResourceListCard({
@@ -14,6 +14,7 @@ class HomeResourceListCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double colorOpacity = Theme.of(context).isLightTheme ? 1 : 0.5;
     return GestureDetector(
       onTap: () {
         context.goNamed(MyRouter.resourceDetailsPageName, extra: resource);
@@ -30,7 +31,7 @@ class HomeResourceListCard extends StatelessWidget {
                 Container(
                   width: 4,
                   height: 70,
-                  color: Theme.of(context).getColorByType(resource.type),
+                  color: Theme.of(context).getColorByType(resource.type).withOpacity(colorOpacity),
                   margin: const EdgeInsets.only(right: AppSpacing.lg),
                 ),
                 Expanded(
@@ -47,6 +48,7 @@ class HomeResourceListCard extends StatelessWidget {
                                 child: Text(resource.name,
                                     style: Theme.of(context).boldText.copyWith(
                                           fontSize: 24,
+                                      overflow: TextOverflow.ellipsis
                                         )),
                               ),
                               Text(resource.type.toFrontendString(),
@@ -67,7 +69,7 @@ class HomeResourceListCard extends StatelessWidget {
               decoration: BoxDecoration(
                   border: Border(
                       bottom:
-                          BorderSide(color: Theme.of(context).getColorByType(resource.type), width: 2))),
+                          BorderSide(color: Theme.of(context).getColorByType(resource.type).withOpacity(colorOpacity), width: 2))),
             ),
           ],
         ),

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:star_wars_fan_app/features/home/bloc/home_bloc.dart';
 import 'package:star_wars_fan_app/features/themes/app_theme.dart';
 import 'package:star_wars_fan_app/router.dart';
-import 'package:star_wars_fan_app/ui_consts/app_spacing.dart';
+import 'package:star_wars_fan_app/ui_consts/dimen.dart';
 
 class HomeErrorDialog {
   static show(BuildContext context, String errorText) {
@@ -13,7 +13,7 @@ class HomeErrorDialog {
       builder: (BuildContext context) {
         return AlertDialog(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(AppRadius.standard),
           ),
           backgroundColor: Theme.of(context).colorScheme.background,
           title: Text('Error',
@@ -40,7 +40,7 @@ class HomeErrorDialog {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Theme.of(context).colorScheme.secondary,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(AppRadius.standard),
                 ),
               ),
               onPressed: () {

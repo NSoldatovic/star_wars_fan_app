@@ -4,7 +4,7 @@ import 'package:star_wars_fan_app/features/home/bloc/home_bloc.dart';
 import 'package:star_wars_fan_app/features/home/widgets/my_check_box.dart';
 import 'package:star_wars_fan_app/features/themes/app_theme.dart';
 import 'package:star_wars_fan_app/models/models.dart';
-import 'package:star_wars_fan_app/ui_consts/app_spacing.dart';
+import 'package:star_wars_fan_app/ui_consts/dimen.dart';
 
 class ResourceFilter {
   static show(BuildContext context) {

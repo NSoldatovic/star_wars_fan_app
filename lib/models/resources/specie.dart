@@ -10,11 +10,11 @@ class Specie extends Resource {
   final String designation;
   final String eyeColors;
   final String hairColors;
-  final String homeworld;
   final String language;
   final String skinColors;
 
   final Map<String, List<String>> connectedResourcesUrls = {};
+  final List<Planet> homeworld = [];
   final List<People> people = [];
   final List<Film> films = [];
 
@@ -25,7 +25,6 @@ class Specie extends Resource {
     required this.designation,
     required this.eyeColors,
     required this.hairColors,
-    required this.homeworld,
     required this.language,
     required this.skinColors,
     required String name,
@@ -41,18 +40,19 @@ class Specie extends Resource {
       designation: map['designation'] as String,
       eyeColors: map['eye_colors'] as String,
       hairColors: map['hair_colors'] as String,
-      homeworld: (map['homeworld'] as String?) ?? "",
       language: map['language'] as String,
       skinColors: map['skin_colors'] as String,
       name: map['name'] as String,
       url: map['url'] as String,
     );
     specie.connectedResourcesUrls.addAll({
+      if (map['homeworld'] != null) 'homeworld': [map['homeworld'] as String],
       'people': List<String>.from(map['people'].map((e) => e.toString())),
       'films': List<String>.from(map['films'].map((e) => e.toString())),
     });
     return specie;
   }
+  // aleeena
 
   @override
   void populateConnectedResources(List<Resource> allResources) {
@@ -61,6 +61,9 @@ class Specie extends Resource {
     }
     for (final url in connectedResourcesUrls['films'] ?? []) {
       films.add(allResources.firstWhere((resource) => resource.url == url) as Film);
+    }
+    for (final url in connectedResourcesUrls['homeworld'] ?? []) {
+      homeworld.add(allResources.firstWhere((resource) => resource.url == url) as Planet);
     }
   }
 }

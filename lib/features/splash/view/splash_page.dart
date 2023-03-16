@@ -6,7 +6,7 @@ import 'package:star_wars_fan_app/features/splash/widgets/loading_dots.dart';
 import 'package:star_wars_fan_app/features/themes/app_theme.dart';
 import 'package:star_wars_fan_app/router.dart';
 import 'package:star_wars_fan_app/features/splash/cubit/splash_cubit.dart';
-import 'package:star_wars_fan_app/ui_consts/app_spacing.dart';
+import 'package:star_wars_fan_app/ui_consts/dimen.dart';
 import 'package:star_wars_fan_app/ui_consts/images.dart';
 import 'package:star_wars_fan_app/ui_consts/star_wars_scaffold.dart';
 
@@ -111,7 +111,7 @@ class SplashView extends StatelessWidget {
                             height: 50,
                             width: double.infinity,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.circular(AppRadius.standard),
                               color: Theme.of(context).primaryColor,
                             ),
                             child: Container(
@@ -125,7 +125,7 @@ class SplashView extends StatelessWidget {
                                     margin: const EdgeInsets.only(right: 35),
                                     height: 5,
                                     decoration: BoxDecoration(
-                                     borderRadius: BorderRadius.circular(16),
+                                     borderRadius: BorderRadius.circular(AppRadius.standard),
                                       color: Theme.of(context).contrastColor,
                                     ),
                                   ),

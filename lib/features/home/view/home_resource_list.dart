@@ -6,7 +6,7 @@ import 'package:star_wars_fan_app/features/home/widgets/home_resource_list_card.
 import 'package:star_wars_fan_app/features/home/widgets/resource_filter.dart';
 import 'package:star_wars_fan_app/features/themes/app_theme.dart';
 import 'package:star_wars_fan_app/models/models.dart';
-import 'package:star_wars_fan_app/ui_consts/app_spacing.dart';
+import 'package:star_wars_fan_app/ui_consts/dimen.dart';
 
 class HomeResourceList extends StatefulWidget {
 

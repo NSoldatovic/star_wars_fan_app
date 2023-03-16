@@ -54,8 +54,11 @@ class AppTheme {
 }
 
 extension ThemeX on ThemeData {
-  Color get contrastColor => brightness == Brightness.light
-      ? AppTheme.lightPrimaryColor
+
+  bool get isLightTheme => brightness == Brightness.light;
+
+  Color get contrastColor => isLightTheme
+      ? AppTheme.lightContrastColor
       : AppTheme.darkContrastColor;
 
   Color get buttonTextColor => AppTheme.darkBackgroundColor;

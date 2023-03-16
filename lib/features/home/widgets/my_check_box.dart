@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:star_wars_fan_app/features/themes/app_theme.dart';
 import 'package:star_wars_fan_app/models/resources/resource.dart';
-import 'package:star_wars_fan_app/ui_consts/app_spacing.dart';
+import 'package:star_wars_fan_app/ui_consts/dimen.dart';
 
 class MyCheckBox extends StatelessWidget {
 

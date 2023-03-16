@@ -8,7 +8,7 @@ class BaseServerService {
   static const int STATUS_CODE_ERROR = 404;
   static const int STATUS_CODE_TIMEOUT = 408;
 
-  static const int _TIME_OUT_IN_SECONDS = 15;
+  static const int _TIME_OUT_IN_SECONDS = 120;
 
   static const String BASE_URL = "https://swapi.dev/api/";
   static const String STAR_WARS_API_CALL_PLANETS = "planets/";

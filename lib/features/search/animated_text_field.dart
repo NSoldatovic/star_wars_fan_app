@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:star_wars_fan_app/features/themes/app_theme.dart';
 import 'package:star_wars_fan_app/services/all_services.dart';
-import 'package:star_wars_fan_app/ui_consts/app_spacing.dart';
+import 'package:star_wars_fan_app/ui_consts/dimen.dart';
 
 class AnimatedSearchTextField extends StatefulWidget {
   final String hintText;
@@ -36,7 +36,7 @@ class _AnimatedSearchTextFieldState extends State<AnimatedSearchTextField> with 
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(AppRadius.standard),
         color: Theme.of(context).primaryColor,
       ),
       margin: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),

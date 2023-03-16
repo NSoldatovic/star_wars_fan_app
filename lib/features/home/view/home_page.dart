@@ -5,7 +5,7 @@ import 'package:star_wars_fan_app/features/home/view/home_resource_list.dart';
 import 'package:star_wars_fan_app/features/home/widgets/home_error_dialog.dart';
 import 'package:star_wars_fan_app/features/home/widgets/home_no_data.dart';
 import 'package:star_wars_fan_app/features/search/search.dart';
-import 'package:star_wars_fan_app/ui_consts/app_spacing.dart';
+import 'package:star_wars_fan_app/ui_consts/dimen.dart';
 import 'package:star_wars_fan_app/ui_consts/star_wars_scaffold.dart';
 
 class HomePage extends StatelessWidget {
@@ -51,9 +51,9 @@ class HomePage extends StatelessWidget {
                 return Expanded(
                   child: Center(
                       child: Text(
-                    "Sorry, we can't find any resource that \nmatches |||" +
-                        " \"${state.text}\" " +
-                        "😕",
+                    "Sorry, we can't find any resource that \nmatches |||"
+                    " \"${state.text}\" "
+                    "😕",
                     textAlign: TextAlign.center,
                   )),
                 );

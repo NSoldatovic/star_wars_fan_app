@@ -24,9 +24,16 @@ abstract class AppSpacing {
   /// xlg spacing value (24pt)
   static const double xlg = 1.5 * spaceUnit;
 
+  /// xlg spacing value (32pt)
+  static const double xxlg = 2 * spaceUnit;
+
   /// xxlg spacing value (40pt)
-  static const double xxlg = 2.5 * spaceUnit;
+  static const double xxxlg = 2.5 * spaceUnit;
 
   /// xxxlg pacing value (64pt)
-  static const double xxxlg = 4 * spaceUnit;
+  static const double xxxxlg = 4 * spaceUnit;
+}
+
+abstract class AppRadius {
+  static const double standard = 16;
 }
