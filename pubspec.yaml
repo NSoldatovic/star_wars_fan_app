@@ -67,7 +67,24 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - lang/en.json
+    - assets/images/
 
+  fonts:
+    - family: StarJediRegular
+      fonts:
+        - asset: assets/fonts/Starjedi-Regular.ttf
+    - family: StarJediHollow
+      fonts:
+        - asset: assets/fonts/StarJedi-Hollow.ttf
+    - family: StarJediOutline
+      fonts:
+        - asset: assets/fonts/StarJedi-Outline.ttf
+    - family: montserrat
+      fonts:
+        - asset: assets/fonts/MontserratRegular.otf
+          weight: 400
+        - asset: assets/fonts/MontserratSemibold.otf
+          weight: 600
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

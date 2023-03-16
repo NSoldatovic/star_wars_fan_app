@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:star_wars_fan_app/features/home/bloc/home_bloc.dart';
+import 'package:star_wars_fan_app/features/home/widgets/home_resource_list_card.dart';
 import 'package:star_wars_fan_app/features/home/widgets/resource_filter.dart';
+import 'package:star_wars_fan_app/features/themes/app_theme.dart';
 import 'package:star_wars_fan_app/models/models.dart';
-import 'package:star_wars_fan_app/router.dart';
 import 'package:star_wars_fan_app/ui_consts/app_spacing.dart';
 
 class HomeResourceList extends StatefulWidget {
@@ -48,20 +49,10 @@ class _HomeResourceListState extends State<HomeResourceList> with TickerProvider
           NotificationListener<ScrollNotification>(
             onNotification: _handleScrollNotification,
             child: ListView.builder(
-              padding: const EdgeInsets.all(AppSpacing.sm),
+              padding: EdgeInsets.zero,
               itemCount: widget.resources.length,
               itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    context.goNamed(MyRouter.resourceDetailsPageName, extra: widget.resources[index]);
-                  },
-                  child: Row (
-                    children: [
-                      Text(widget.resources[index].name+ "   "),
-                      Text(widget.resources[index].type.toString()),
-                    ],
-                  ),
-                );
+                return HomeResourceListCard(resource: widget.resources[index]);
               }
             ),
           ),
@@ -84,7 +75,9 @@ class _HomeResourceListState extends State<HomeResourceList> with TickerProvider
                     padding: const EdgeInsets.all(AppSpacing.xxs),
                     child: IconButton(onPressed: () {
                       ResourceFilter.show(context);
-                    }, icon: const Icon(Icons.filter_list_rounded, size: 32,)),
+                    }, icon: Icon(Icons.filter_list_rounded,
+                      color: Theme.of(context).buttonTextColor, size: 32,),
+                    ),
                   ),
                 ),
                 if (context.read<HomeBloc>().selectedTypes.isNotEmpty) Positioned(

@@ -28,6 +28,25 @@ enum ResourceType {
     }
   }
 
+  String toFrontendString() {
+    switch (this) {
+      case ResourceType.people:
+        return "Character";
+      case ResourceType.films:
+        return "Film";
+      case ResourceType.starships:
+        return "Starship";
+      case ResourceType.vehicles:
+        return "Vehicle";
+      case ResourceType.species:
+        return "Specie";
+      case ResourceType.planets:
+        return "Planet";
+      default:
+        return "";
+    }
+  }
+
   static ResourceType getResourceTypeFromString(String value) {
     switch (value.toLowerCase()) {
       case "people":

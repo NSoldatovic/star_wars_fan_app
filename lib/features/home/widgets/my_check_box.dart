@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:star_wars_fan_app/features/themes/app_theme.dart';
 import 'package:star_wars_fan_app/models/resources/resource.dart';
+import 'package:star_wars_fan_app/ui_consts/app_spacing.dart';
 
 class MyCheckBox extends StatelessWidget {
 
@@ -18,7 +20,7 @@ class MyCheckBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color checkboxColor = Colors.blue;
+    Color checkboxColor = Theme.of(context).colorScheme.secondary;
     return Theme(
       data: ThemeData(
         unselectedWidgetColor: checkboxColor,
@@ -30,30 +32,34 @@ class MyCheckBox extends StatelessWidget {
       ),
       child: Container(
         margin: margin,
-        child: CheckboxListTile(
-          visualDensity: VisualDensity.compact,
-          dense: true,
-          controlAffinity: ListTileControlAffinity.leading,
-          contentPadding: EdgeInsets.zero,
-          activeColor: checkboxColor,
-          title: Text(
-            resourceType.toString().toUpperCase()
-          ),
-          value: checkedValue,
-          onChanged: (newValue) {
-            onChanged(newValue ?? false);
+        child: GestureDetector(
+          onTap: () {
+            onChanged(!checkedValue);
           },
+          child: Row(
+            children: [
+              Transform.scale(
+                scale: 1.5,
+                child: Checkbox(
+                  visualDensity: VisualDensity.compact,
+                  activeColor: checkboxColor,
+                  checkColor: Theme.of(context).colorScheme.background,
+                  value: checkedValue,
+                  onChanged: (newValue) {
+                    onChanged(newValue ?? false);
+                  },
+                ),
+              ),
+              const SizedBox(width: AppSpacing.lg,),
+              Text(
+                resourceType.toFrontendString().toUpperCase(),
+                style: Theme.of(context).boldText,
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
-
-  // TextStyle formTextStyle() {
-  //   return TextStyle(
-  //     fontSize: font_size_text_field,
-  //     color: AllServices().themeService.colorThemeService.colorTextFieldText(),
-  //     fontFamily: font_barlow_regular
-  //   );
-  // }
 
 }

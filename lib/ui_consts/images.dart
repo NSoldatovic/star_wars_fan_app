@@ -1,0 +1,1 @@
+const String image_loading_ship = "assets/images/loading_ship.png";

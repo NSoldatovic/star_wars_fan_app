@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:star_wars_fan_app/features/resource_details/widgets/widgets.dart';
 import 'package:star_wars_fan_app/models/models.dart';
 import 'package:star_wars_fan_app/ui_consts/app_spacing.dart';
+import 'package:star_wars_fan_app/ui_consts/star_wars_scaffold.dart';
 
 class ResourceDetailsPage extends StatelessWidget {
   final Resource resource;
@@ -11,8 +12,8 @@ class ResourceDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
+    return StarWarsScaffold(
+      child: Container(
         padding: EdgeInsets.only(
           top: MediaQuery.of(context).viewPadding.top,
           bottom: MediaQuery.of(context).viewPadding.bottom,

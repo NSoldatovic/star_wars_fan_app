@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:star_wars_fan_app/features/themes/app_theme.dart';
 import 'package:star_wars_fan_app/services/all_services.dart';
 import 'package:star_wars_fan_app/ui_consts/app_spacing.dart';
 
@@ -11,7 +12,7 @@ class AnimatedSearchTextField extends StatefulWidget {
       : super(key: key);
 
   @override
-  _AnimatedSearchTextFieldState createState() => _AnimatedSearchTextFieldState();
+  State<AnimatedSearchTextField> createState() => _AnimatedSearchTextFieldState();
 }
 
 class _AnimatedSearchTextFieldState extends State<AnimatedSearchTextField> with SingleTickerProviderStateMixin {
@@ -35,8 +36,9 @@ class _AnimatedSearchTextFieldState extends State<AnimatedSearchTextField> with 
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: Theme.of(context).colorScheme.onSurface,
+        color: Theme.of(context).primaryColor,
       ),
+      margin: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
       child: Row(
         children: [
           const Padding(
@@ -49,6 +51,7 @@ class _AnimatedSearchTextFieldState extends State<AnimatedSearchTextField> with 
               onChanged: (value) {
                 widget.onTextChanged(value);
               },
+              cursorColor: Theme.of(context).contrastColor,
               decoration: InputDecoration(
                 hintText: widget.hintText,
                 border: InputBorder.none,

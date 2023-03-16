@@ -37,6 +37,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       allResources.addAll(await AllServices().serverCommunicationService.getAllPeople());
       emit(const HomeLoading(100));
       _connectResources();
+      // allResources.shuffle();
+      allResources.sort((a, b) => a.name.compareTo(b.name));
       await Future.delayed(const Duration(milliseconds: 50));
       emit(HomeLoaded(allResources));
     } catch (e) {
