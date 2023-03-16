@@ -6,9 +6,7 @@ import 'package:star_wars_fan_app/features/splash/widgets/loading_dots.dart';
 import 'package:star_wars_fan_app/features/themes/app_theme.dart';
 import 'package:star_wars_fan_app/router.dart';
 import 'package:star_wars_fan_app/features/splash/cubit/splash_cubit.dart';
-import 'package:star_wars_fan_app/ui_consts/dimen.dart';
-import 'package:star_wars_fan_app/ui_consts/images.dart';
-import 'package:star_wars_fan_app/ui_consts/star_wars_scaffold.dart';
+import 'package:star_wars_fan_app/utils/utils.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);

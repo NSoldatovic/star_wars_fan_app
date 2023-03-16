@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:star_wars_fan_app/features/resource_details/widgets/widgets.dart';
 import 'package:star_wars_fan_app/features/themes/app_theme.dart';
 import 'package:star_wars_fan_app/models/models.dart';
-import 'package:star_wars_fan_app/ui_consts/dimen.dart';
-import 'package:star_wars_fan_app/ui_consts/star_wars_scaffold.dart';
+import 'package:star_wars_fan_app/utils/utils.dart';
 
 class ResourceDetailsPage extends StatelessWidget {
   final Resource resource;

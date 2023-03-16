@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:star_wars_fan_app/models/models.dart';
-import 'package:star_wars_fan_app/ui_consts/fonts.dart';
+import 'package:star_wars_fan_app/utils/utils.dart';
 
 class AppTheme {
   static Color lightBackgroundColor = const Color(0xFFF5F8FF);

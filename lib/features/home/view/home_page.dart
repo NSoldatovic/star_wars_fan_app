@@ -5,8 +5,7 @@ import 'package:star_wars_fan_app/features/home/view/home_resource_list.dart';
 import 'package:star_wars_fan_app/features/home/widgets/home_error_dialog.dart';
 import 'package:star_wars_fan_app/features/home/widgets/home_no_data.dart';
 import 'package:star_wars_fan_app/features/search/search.dart';
-import 'package:star_wars_fan_app/ui_consts/dimen.dart';
-import 'package:star_wars_fan_app/ui_consts/star_wars_scaffold.dart';
+import 'package:star_wars_fan_app/utils/utils.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

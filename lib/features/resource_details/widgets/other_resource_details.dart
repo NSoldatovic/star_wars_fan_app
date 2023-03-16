@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:star_wars_fan_app/features/home/widgets/home_resource_list_card.dart';
 import 'package:star_wars_fan_app/features/themes/app_theme.dart';
 import 'package:star_wars_fan_app/models/models.dart';
-import 'package:star_wars_fan_app/ui_consts/dimen.dart';
+import 'package:star_wars_fan_app/utils/utils.dart';
 
 class OtherResourceDetails extends StatelessWidget {
   final List<Resource> resources;

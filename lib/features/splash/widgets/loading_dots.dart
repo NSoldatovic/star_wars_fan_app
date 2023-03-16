@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:star_wars_fan_app/features/themes/app_theme.dart';
-import 'package:star_wars_fan_app/ui_consts/dimen.dart';
+import 'package:star_wars_fan_app/utils/utils.dart';
 
 class LoadingDots extends StatefulWidget {
   const LoadingDots({Key? key}) : super(key: key);
